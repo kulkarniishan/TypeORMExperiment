@@ -1,9 +1,25 @@
-version: '3.1'
-
+version: '3'
 services:
-
-  db:
+  mysql_server:
     image: mysql
-    restart: always
+    container_name: mysql
     ports:
       - 3306:3306
+    volumes:
+      - mysql_data_container:/var/lib/sql
+    restart: always
+    environment:
+      MYSQL_HOST: mysql_server
+      MYSQL_DATABASE: everything
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: password
+      MYSQL_ROOT_PASSWORD: password
+    networks:
+      - web
+
+volumes:
+  mysql_data_container:
+
+networks:
+  web:
+    driver: bridge
