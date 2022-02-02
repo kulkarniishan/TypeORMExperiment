@@ -10,12 +10,19 @@ services:
     restart: always
     environment:
       MYSQL_HOST: mysql_server
-      MYSQL_DATABASE: everything
+      MYSQL_DATABASE: typeorm
       MYSQL_USER: admin
       MYSQL_PASSWORD: password
       MYSQL_ROOT_PASSWORD: password
     networks:
       - web
+  adminer:
+    image: adminer
+    restart: always
+    networks:
+      - web
+    ports:
+      - 8080:8080
 
 volumes:
   mysql_data_container:

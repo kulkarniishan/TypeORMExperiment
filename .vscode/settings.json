@@ -12,6 +12,32 @@
             "database": "typeorm",
             "username": "admin",
             "password": "password"
+        },
+        {
+            "mysqlOptions": {
+                "authProtocol": "default"
+            },
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 3306,
+            "driver": "MySQL",
+            "name": "test1",
+            "database": "typeorm",
+            "username": "sqluser",
+            "password": "password"
+        },
+        {
+            "mysqlOptions": {
+                "authProtocol": "default"
+            },
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 3306,
+            "driver": "MySQL",
+            "name": "test2",
+            "database": "typeorm",
+            "username": "user",
+            "password": "pass"
         }
     ]
 }
