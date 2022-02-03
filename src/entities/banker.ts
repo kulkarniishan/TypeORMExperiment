@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryColumn } from "typeorm";
+import { Column, Entity, JoinTable, ManyToMany, PrimaryColumn } from "typeorm";
+import { Client } from "./Client";
 import { Person } from "./utils/Person";
 
 @Entity({ name: 'banker' })
@@ -27,4 +28,21 @@ export class Banker extends Person {
         unique: true,
     })
     employee_number: number;
+
+    //Relationships
+    @ManyToMany(
+        () => Client,
+    )
+    @JoinTable({
+        name: "bankers_clients",
+        joinColumn: {
+            name: "banker",
+            referencedColumnName: "id",
+        },
+        inverseJoinColumn: {
+            name: "client",
+            referencedColumnName: "id",
+        },
+    })
+    clients: Client[];
 }
