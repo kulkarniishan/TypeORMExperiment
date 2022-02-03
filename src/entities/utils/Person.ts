@@ -1,8 +1,7 @@
-import { Column, Entity, PrimaryColumn } from "typeorm";
-import { Person } from "./utils/Person";
+import { BaseEntity, Column, CreateDateColumn, Entity, PrimaryColumn } from "typeorm";
 
-@Entity({ name: 'banker' })
-export class Banker extends Person {
+@Entity()
+export class Person extends BaseEntity {
     @PrimaryColumn()
     id: number;
 
@@ -23,8 +22,9 @@ export class Banker extends Person {
     })
     card_number: string;
 
-    @Column({
-        unique: true,
-    })
-    employee_number: number;
+    @CreateDateColumn()
+    created_at: Date;
+
+    @CreateDateColumn()
+    updated_at: Date;
 }

@@ -1,7 +1,4 @@
-console.log("Hello")
-
 import { createConnection, Connection } from "typeorm"
-import { Client } from "./entities/client";
 
 var connection: Connection
 const connect = async () => {
