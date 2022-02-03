@@ -25,8 +25,17 @@ router.post('/client', (req, res, next) => {
         .catch((error) => res.status(500).send(error))
 
 });
-router.get('/client', (req, res) => {
-    res.send('hellos')
+router.get('/client/:clientId', (req, res) => {
+    const { clientId } = req.params;
+
+
+});
+
+router.get('/client/all', (req, res) => {
+
+    Client.find()
+        .then((clients) => res.json(clients))
+        .catch((error) => res.status(500).send(error))
 });
 
 router.delete('/client/:clientId', (req, res) => {
