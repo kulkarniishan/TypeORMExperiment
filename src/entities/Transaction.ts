@@ -26,11 +26,14 @@ export class Transaction extends BaseEntity {
     //Relationships
     @ManyToOne(
         () => Client,
-        client => client.transactions
+        client => client.transactions, {
+        onDelete:'CASCADE'
+    }
     )
 
     @JoinColumn({
         name: 'client_id'
     })
     client: Client
+
 }

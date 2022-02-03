@@ -21,14 +21,21 @@ router.post('/client', (req, res, next) => {
     })
 
     client.save()
-        .then((savedClient) =>res.json(client))
-        .catch((error) =>  res.status(500).send(error))
+        .then((savedClient) => res.json(client))
+        .catch((error) => res.status(500).send(error))
 
 });
 router.get('/client', (req, res) => {
     res.send('hellos')
 });
 
+router.delete('/client/:clientId', (req, res) => {
+    const { clientId } = req.params;
+
+    Client.delete(parseInt(clientId))
+        .then((deletedClient) => res.json(deletedClient))
+        .catch((error) => res.status(404).send(error))
+})
 export {
     router as clientRouter
 }
