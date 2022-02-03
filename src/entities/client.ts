@@ -1,4 +1,4 @@
-import { Column, Entity, ManyToMany, OneToMany} from "typeorm";
+import { Column, Entity, ManyToMany, OneToMany } from "typeorm";
 import { Banker } from "./Banker";
 import { Transaction } from "./Transaction";
 import { Person } from "./utils/Person";
@@ -43,7 +43,9 @@ export class Client extends Person {
 
 
     @ManyToMany(
-        () => Banker,
+        () => Banker, {
+        cascade: true,
+    }
     )
     bankers: Banker[];
 }

@@ -31,7 +31,9 @@ export class Banker extends Person {
 
     //Relationships
     @ManyToMany(
-        () => Client,
+        () => Client, {
+        cascade: true,
+    }
     )
     @JoinTable({
         name: "bankers_clients",
