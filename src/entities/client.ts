@@ -1,6 +1,6 @@
 import { BaseEntity, Column, CreateDateColumn, Entity, PrimaryColumn } from "typeorm";
 
-@Entity({name:'client'})
+@Entity({ name: 'client' })
 export class Client extends BaseEntity {
     @PrimaryColumn()
     id: number;
@@ -42,12 +42,16 @@ export class Client extends BaseEntity {
         hair_color: string
     };
 
-    // @Column({
-    //     type: "simple-array",
-    //     default: []
-    // })
-    // family_members: string[];
+    //Works in postgres
+    @Column({
+        type: "simple-array",
+        default: []
+    })
+    family_members: string[];
 
     @CreateDateColumn()
     created_at: Date;
+
+    @CreateDateColumn()
+    updated_at: Date;
 }
