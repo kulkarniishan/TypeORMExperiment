@@ -3,7 +3,7 @@ import { Banker } from "../entities/Banker";
 
 const router = express.Router();
 
-router.post('/banker', (req, res, next) => {
+router.post('/', (req, res, next) => {
     const {
         firstName,
         lastName,
@@ -25,7 +25,7 @@ router.post('/banker', (req, res, next) => {
         .catch((error) => res.status(500).send(error))
 
 });
-router.get('/banker', (req, res) => {
+router.get('/', (req, res) => {
     res.send('hellos')
 });
 

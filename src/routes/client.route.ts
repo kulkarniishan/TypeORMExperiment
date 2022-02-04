@@ -3,7 +3,7 @@ import { Client } from "../entities/Client";
 
 const router = express.Router();
 
-router.post('/client', (req, res, next) => {
+router.post('', (req, res, next) => {
     const {
         firstName,
         lastName,
@@ -25,20 +25,29 @@ router.post('/client', (req, res, next) => {
         .catch((error) => res.status(500).send(error))
 
 });
-router.get('/client/:clientId', (req, res) => {
+router.get('/:clientId', (req, res) => {
     const { clientId } = req.params;
 
-
-});
-
-router.get('/client/all', (req, res) => {
-
-    Client.find()
+    Client.findOne(parseInt(clientId))
         .then((clients) => res.json(clients))
         .catch((error) => res.status(500).send(error))
 });
 
-router.delete('/client/:clientId', (req, res) => {
+router.get('/all', (req, res) => {
+    Client.find()
+        .then((clients) => res.json(clients))
+        .catch((error) => res.status(500).send(error))
+});
+router.get('/:clientId', (req, res) => {
+
+    const { clientId } = req.params;
+
+    Client.findOne(parseInt(clientId))
+        .then((client) => res.json(client))
+        .catch((error) => res.status(500).send(error))
+});
+
+router.delete('/:clientId', (req, res) => {
     const { clientId } = req.params;
 
     Client.delete(parseInt(clientId))

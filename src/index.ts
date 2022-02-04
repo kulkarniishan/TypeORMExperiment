@@ -16,11 +16,13 @@ createConnection()
         app.use(express.json())
 
         //Routes
-        app.use(clientRouter)
-        app.use(bankerRouter)
+        app.use('/client',clientRouter)
+        app.use('/banker',bankerRouter)
         app.use(transactionRouter)
         app.use(connectionRouter)
-        
+        app.use('/',(req,res)=>{
+            res.send('done')
+        })
         app.listen(port, () => {
             console.log(`The app is listening on port ${port}`)
         })
