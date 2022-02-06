@@ -1,5 +1,6 @@
 import express from "express";
 import { Banker } from "../entities/Banker";
+import { QueryBuilder } from "typeorm";
 
 const router = express.Router();
 
@@ -25,7 +26,14 @@ router.post('/', (req, res, next) => {
         .catch((error) => res.status(500).send(error))
 
 });
-router.get('/', (req, res) => {
+
+router.get('/all', (req, res) => {
+    Banker.find()
+        .then((banker) => res.json(banker))
+        .catch((error) => res.status(500).json(error))
+});
+
+router.get('/:bankerId', (req, res) => {
     res.send('hellos')
 });
 

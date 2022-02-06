@@ -25,27 +25,21 @@ router.post('', (req, res, next) => {
         .catch((error) => res.status(500).send(error))
 
 });
-router.get('/:clientId', (req, res) => {
-    const { clientId } = req.params;
-
-    Client.findOne(parseInt(clientId))
-        .then((clients) => res.json(clients))
-        .catch((error) => res.status(500).send(error))
-});
 
 router.get('/all', (req, res) => {
     Client.find()
         .then((clients) => res.json(clients))
         .catch((error) => res.status(500).send(error))
 });
-router.get('/:clientId', (req, res) => {
 
+router.get('/:clientId', (req, res) => {
     const { clientId } = req.params;
 
     Client.findOne(parseInt(clientId))
-        .then((client) => res.json(client))
+        .then((clients) => res.json(clients))
         .catch((error) => res.status(500).send(error))
 });
+
 
 router.delete('/:clientId', (req, res) => {
     const { clientId } = req.params;
